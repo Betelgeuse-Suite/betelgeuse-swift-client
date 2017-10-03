@@ -1,0 +1,6 @@
+framework module Pods_BetelgeuseSwiftSDK {
+  umbrella header "Pods-BetelgeuseSwiftSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
