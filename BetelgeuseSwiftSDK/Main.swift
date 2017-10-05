@@ -19,28 +19,28 @@ public class BetelgeuseSwiftSDK {
             print(data.allKeys)
         }))
 //        BetelgeuseSwiftSDK.loadUrl()
-
-        if let m = BetelgeuseSwiftSDK.loadDataFromFile() {
-            print("The Model() is \(m.nested.nested.file.value)")
-        }
+//
+//        if let m = BetelgeuseSwiftSDK.loadDataFromFile() {
+//            print("The Model() is \(m.nested.nested.file.value)")
+//        }
     }
 
-    public static func getModel() -> Model? {
-        return BetelgeuseSwiftSDK.loadDataFromFile()
-    }
-
-    private static func loadUrl() {
-        if let url = URL(string: "\(ENDPOINT_URL)/versions.json") {
-            do {
-                let contents = try String(contentsOf: url)
-                print(contents)
-            } catch {
-                // contents could not be loaded
-            }
-        } else {
-            // the URL was bad!
-        }
-    }
+//    public static func getModel() -> Model? {
+//        return BetelgeuseSwiftSDK.loadDataFromFile()
+//    }
+//
+//    private static func loadUrl() {
+//        if let url = URL(string: "\(ENDPOINT_URL)/versions.json") {
+//            do {
+//                let contents = try String(contentsOf: url)
+//                print(contents)
+//            } catch {
+//                // contents could not be loaded
+//            }
+//        } else {
+//            // the URL was bad!
+//        }
+//    }
 
     private static func getAllVersions(completionHandler: @escaping(NSDictionary) -> Void) {
         let url = URL(string: "\(ENDPOINT_URL)/versions.json")
@@ -65,33 +65,33 @@ public class BetelgeuseSwiftSDK {
         }).resume()
     }
 
-    private static func loadDataFromFile() -> Model? {
-        let fileName = BetelgeuseSwiftSDK.FILE_NAME
-
-        let podBundle = Bundle(for: BetelgeuseSwiftSDK.self as AnyClass)
-
-        if let bundleURL = podBundle.url(forResource: "BetelgeuseSwiftSDKData", withExtension: "bundle") {
-            if let bundle = Bundle(url: bundleURL) {
-                if let path = bundle.path(forResource: fileName, ofType: "json") {
-                    if let jsonData = try? NSData(
-                        contentsOfFile: path,
-                        options: NSData.ReadingOptions.mappedIfSafe
-                        ) {
-                        if let jsonResult: NSDictionary = try? JSONSerialization.jsonObject(
-                            with: jsonData as Data,
-                            options: JSONSerialization.ReadingOptions.mutableContainers
-                            ) as! NSDictionary {
-
-//                            print(jsonResult)
-                            return Model(jsonResult)
-                        }
-                    }
-                }
-            }
-        } else {
-            print("Path \(fileName) not found")
-        }
-
-        return nil
-    }
+//    private static func loadDataFromFile() -> Model? {
+//        let fileName = BetelgeuseSwiftSDK.FILE_NAME
+//
+//        let podBundle = Bundle(for: BetelgeuseSwiftSDK.self as AnyClass)
+//
+//        if let bundleURL = podBundle.url(forResource: "BetelgeuseSwiftSDKData", withExtension: "bundle") {
+//            if let bundle = Bundle(url: bundleURL) {
+//                if let path = bundle.path(forResource: fileName, ofType: "json") {
+//                    if let jsonData = try? NSData(
+//                        contentsOfFile: path,
+//                        options: NSData.ReadingOptions.mappedIfSafe
+//                        ) {
+//                        if let jsonResult: NSDictionary = try? JSONSerialization.jsonObject(
+//                            with: jsonData as Data,
+//                            options: JSONSerialization.ReadingOptions.mutableContainers
+//                            ) as! NSDictionary {
+//
+////                            print(jsonResult)
+//                            return Model(jsonResult)
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            print("Path \(fileName) not found")
+//        }
+//
+//        return nil
+//    }
 }

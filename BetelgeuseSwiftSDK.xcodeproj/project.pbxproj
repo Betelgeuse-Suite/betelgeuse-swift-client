@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A8BB378A1F84590B001A29C2 /* BetelgeuseSwiftSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BB37881F84590B001A29C2 /* BetelgeuseSwiftSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8BB37911F845D03001A29C2 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BB37901F845D02001A29C2 /* Main.swift */; };
-		A8BB37931F845DA1001A29C2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BB37921F845DA1001A29C2 /* Model.swift */; };
 		E86BE6FC1AAAAB5643DEE5D6 /* Pods_BetelgeuseSwiftSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31ABC53440B0E583B55B6D3 /* Pods_BetelgeuseSwiftSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,7 +19,6 @@
 		A8BB37881F84590B001A29C2 /* BetelgeuseSwiftSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetelgeuseSwiftSDK.h; sourceTree = "<group>"; };
 		A8BB37891F84590B001A29C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8BB37901F845D02001A29C2 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		A8BB37921F845DA1001A29C2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = ../../.bin/Model.swift; sourceTree = "<group>"; };
 		B31ABC53440B0E583B55B6D3 /* Pods_BetelgeuseSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetelgeuseSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,7 +64,6 @@
 		A8BB37871F84590B001A29C2 /* BetelgeuseSwiftSDK */ = {
 			isa = PBXGroup;
 			children = (
-				A8BB37921F845DA1001A29C2 /* Model.swift */,
 				A8BB37881F84590B001A29C2 /* BetelgeuseSwiftSDK.h */,
 				A8BB37891F84590B001A29C2 /* Info.plist */,
 				A8BB37901F845D02001A29C2 /* Main.swift */,
@@ -198,7 +195,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8BB37911F845D03001A29C2 /* Main.swift in Sources */,
-				A8BB37931F845DA1001A29C2 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
