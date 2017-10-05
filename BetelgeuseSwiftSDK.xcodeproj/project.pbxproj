@@ -7,99 +7,105 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8BB37751F844F9B001A29C2 /* BetelgeuseSwiftSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BB37731F844F9B001A29C2 /* BetelgeuseSwiftSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD63C253DB74EC8B35C45DDA /* Pods_BetelgeuseSwiftSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C1AB0B7B6BC0E03C24A652 /* Pods_BetelgeuseSwiftSDK.framework */; };
+		A8BB378A1F84590B001A29C2 /* BetelgeuseSwiftSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8BB37881F84590B001A29C2 /* BetelgeuseSwiftSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8BB37911F845D03001A29C2 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BB37901F845D02001A29C2 /* Main.swift */; };
+		A8BB37931F845DA1001A29C2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BB37921F845DA1001A29C2 /* Model.swift */; };
+		E86BE6FC1AAAAB5643DEE5D6 /* Pods_BetelgeuseSwiftSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31ABC53440B0E583B55B6D3 /* Pods_BetelgeuseSwiftSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		35667F2F6A9A99216DC63BBB /* Pods-BetelgeuseSwiftSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetelgeuseSwiftSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetelgeuseSwiftSDK/Pods-BetelgeuseSwiftSDK.debug.xcconfig"; sourceTree = "<group>"; };
-		3C359EFED7E530E8DFA88B52 /* Pods-BetelgeuseSwiftSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetelgeuseSwiftSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetelgeuseSwiftSDK/Pods-BetelgeuseSwiftSDK.release.xcconfig"; sourceTree = "<group>"; };
-		94C1AB0B7B6BC0E03C24A652 /* Pods_BetelgeuseSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetelgeuseSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8BB37701F844F9B001A29C2 /* BetelgeuseSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BetelgeuseSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8BB37731F844F9B001A29C2 /* BetelgeuseSwiftSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetelgeuseSwiftSDK.h; sourceTree = "<group>"; };
-		A8BB37741F844F9B001A29C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A33C94091B78C208E5CD575 /* Pods-BetelgeuseSwiftSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetelgeuseSwiftSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-BetelgeuseSwiftSDK/Pods-BetelgeuseSwiftSDK.release.xcconfig"; sourceTree = "<group>"; };
+		59AC1294A8E34316302F0688 /* Pods-BetelgeuseSwiftSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BetelgeuseSwiftSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BetelgeuseSwiftSDK/Pods-BetelgeuseSwiftSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		A8BB37851F84590B001A29C2 /* BetelgeuseSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BetelgeuseSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8BB37881F84590B001A29C2 /* BetelgeuseSwiftSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetelgeuseSwiftSDK.h; sourceTree = "<group>"; };
+		A8BB37891F84590B001A29C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8BB37901F845D02001A29C2 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		A8BB37921F845DA1001A29C2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = ../../.bin/Model.swift; sourceTree = "<group>"; };
+		B31ABC53440B0E583B55B6D3 /* Pods_BetelgeuseSwiftSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BetelgeuseSwiftSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A8BB376C1F844F9B001A29C2 /* Frameworks */ = {
+		A8BB37811F84590B001A29C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD63C253DB74EC8B35C45DDA /* Pods_BetelgeuseSwiftSDK.framework in Frameworks */,
+				E86BE6FC1AAAAB5643DEE5D6 /* Pods_BetelgeuseSwiftSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		39FAE264BB5EB8F3745D48BD /* Pods */ = {
+		7BFA8D5FD5E9BCB5D18441C9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				35667F2F6A9A99216DC63BBB /* Pods-BetelgeuseSwiftSDK.debug.xcconfig */,
-				3C359EFED7E530E8DFA88B52 /* Pods-BetelgeuseSwiftSDK.release.xcconfig */,
+				59AC1294A8E34316302F0688 /* Pods-BetelgeuseSwiftSDK.debug.xcconfig */,
+				1A33C94091B78C208E5CD575 /* Pods-BetelgeuseSwiftSDK.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A241F128068826716E3E1760 /* Frameworks */ = {
+		A8BB377B1F84590B001A29C2 = {
 			isa = PBXGroup;
 			children = (
-				94C1AB0B7B6BC0E03C24A652 /* Pods_BetelgeuseSwiftSDK.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A8BB37661F844F9A001A29C2 = {
-			isa = PBXGroup;
-			children = (
-				A8BB37721F844F9B001A29C2 /* BetelgeuseSwiftSDK */,
-				A8BB37711F844F9B001A29C2 /* Products */,
-				39FAE264BB5EB8F3745D48BD /* Pods */,
-				A241F128068826716E3E1760 /* Frameworks */,
+				A8BB37871F84590B001A29C2 /* BetelgeuseSwiftSDK */,
+				A8BB37861F84590B001A29C2 /* Products */,
+				7BFA8D5FD5E9BCB5D18441C9 /* Pods */,
+				B65ECC67506746575FB5C153 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		A8BB37711F844F9B001A29C2 /* Products */ = {
+		A8BB37861F84590B001A29C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A8BB37701F844F9B001A29C2 /* BetelgeuseSwiftSDK.framework */,
+				A8BB37851F84590B001A29C2 /* BetelgeuseSwiftSDK.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A8BB37721F844F9B001A29C2 /* BetelgeuseSwiftSDK */ = {
+		A8BB37871F84590B001A29C2 /* BetelgeuseSwiftSDK */ = {
 			isa = PBXGroup;
 			children = (
-				A8BB37731F844F9B001A29C2 /* BetelgeuseSwiftSDK.h */,
-				A8BB37741F844F9B001A29C2 /* Info.plist */,
+				A8BB37921F845DA1001A29C2 /* Model.swift */,
+				A8BB37881F84590B001A29C2 /* BetelgeuseSwiftSDK.h */,
+				A8BB37891F84590B001A29C2 /* Info.plist */,
+				A8BB37901F845D02001A29C2 /* Main.swift */,
 			);
 			path = BetelgeuseSwiftSDK;
+			sourceTree = "<group>";
+		};
+		B65ECC67506746575FB5C153 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B31ABC53440B0E583B55B6D3 /* Pods_BetelgeuseSwiftSDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		A8BB376D1F844F9B001A29C2 /* Headers */ = {
+		A8BB37821F84590B001A29C2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8BB37751F844F9B001A29C2 /* BetelgeuseSwiftSDK.h in Headers */,
+				A8BB378A1F84590B001A29C2 /* BetelgeuseSwiftSDK.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A8BB376F1F844F9B001A29C2 /* BetelgeuseSwiftSDK */ = {
+		A8BB37841F84590B001A29C2 /* BetelgeuseSwiftSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A8BB37781F844F9B001A29C2 /* Build configuration list for PBXNativeTarget "BetelgeuseSwiftSDK" */;
+			buildConfigurationList = A8BB378D1F84590B001A29C2 /* Build configuration list for PBXNativeTarget "BetelgeuseSwiftSDK" */;
 			buildPhases = (
-				E88CA553CF72FA1182EED463 /* [CP] Check Pods Manifest.lock */,
-				A8BB376B1F844F9B001A29C2 /* Sources */,
-				A8BB376C1F844F9B001A29C2 /* Frameworks */,
-				A8BB376D1F844F9B001A29C2 /* Headers */,
-				A8BB376E1F844F9B001A29C2 /* Resources */,
-				01BE2FCDB0052E06145AA94A /* [CP] Copy Pods Resources */,
+				1A35F9AEAC3EB30FDE7A4ED5 /* [CP] Check Pods Manifest.lock */,
+				A8BB37801F84590B001A29C2 /* Sources */,
+				A8BB37811F84590B001A29C2 /* Frameworks */,
+				A8BB37821F84590B001A29C2 /* Headers */,
+				A8BB37831F84590B001A29C2 /* Resources */,
+				F0507D521EC540BC7CCC6D7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -107,43 +113,44 @@
 			);
 			name = BetelgeuseSwiftSDK;
 			productName = BetelgeuseSwiftSDK;
-			productReference = A8BB37701F844F9B001A29C2 /* BetelgeuseSwiftSDK.framework */;
+			productReference = A8BB37851F84590B001A29C2 /* BetelgeuseSwiftSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A8BB37671F844F9A001A29C2 /* Project object */ = {
+		A8BB377C1F84590B001A29C2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Betelgeuse;
 				TargetAttributes = {
-					A8BB376F1F844F9B001A29C2 = {
+					A8BB37841F84590B001A29C2 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = A8BB376A1F844F9B001A29C2 /* Build configuration list for PBXProject "BetelgeuseSwiftSDK" */;
+			buildConfigurationList = A8BB377F1F84590B001A29C2 /* Build configuration list for PBXProject "BetelgeuseSwiftSDK" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = A8BB37661F844F9A001A29C2;
-			productRefGroup = A8BB37711F844F9B001A29C2 /* Products */;
+			mainGroup = A8BB377B1F84590B001A29C2;
+			productRefGroup = A8BB37861F84590B001A29C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A8BB376F1F844F9B001A29C2 /* BetelgeuseSwiftSDK */,
+				A8BB37841F84590B001A29C2 /* BetelgeuseSwiftSDK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A8BB376E1F844F9B001A29C2 /* Resources */ = {
+		A8BB37831F84590B001A29C2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -153,22 +160,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01BE2FCDB0052E06145AA94A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BetelgeuseSwiftSDK/Pods-BetelgeuseSwiftSDK-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E88CA553CF72FA1182EED463 /* [CP] Check Pods Manifest.lock */ = {
+		1A35F9AEAC3EB30FDE7A4ED5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -183,20 +175,37 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		F0507D521EC540BC7CCC6D7F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BetelgeuseSwiftSDK/Pods-BetelgeuseSwiftSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A8BB376B1F844F9B001A29C2 /* Sources */ = {
+		A8BB37801F84590B001A29C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BB37911F845D03001A29C2 /* Main.swift in Sources */,
+				A8BB37931F845DA1001A29C2 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A8BB37761F844F9B001A29C2 /* Debug */ = {
+		A8BB378B1F84590B001A29C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -256,7 +265,7 @@
 			};
 			name = Debug;
 		};
-		A8BB37771F844F9B001A29C2 /* Release */ = {
+		A8BB378C1F84590B001A29C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -309,10 +318,11 @@
 			};
 			name = Release;
 		};
-		A8BB37791F844F9B001A29C2 /* Debug */ = {
+		A8BB378E1F84590B001A29C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35667F2F6A9A99216DC63BBB /* Pods-BetelgeuseSwiftSDK.debug.xcconfig */;
+			baseConfigurationReference = 59AC1294A8E34316302F0688 /* Pods-BetelgeuseSwiftSDK.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -325,15 +335,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.betelgeuse.BetelgeuseSwiftSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		A8BB377A1F844F9B001A29C2 /* Release */ = {
+		A8BB378F1F84590B001A29C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C359EFED7E530E8DFA88B52 /* Pods-BetelgeuseSwiftSDK.release.xcconfig */;
+			baseConfigurationReference = 1A33C94091B78C208E5CD575 /* Pods-BetelgeuseSwiftSDK.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -354,25 +366,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A8BB376A1F844F9B001A29C2 /* Build configuration list for PBXProject "BetelgeuseSwiftSDK" */ = {
+		A8BB377F1F84590B001A29C2 /* Build configuration list for PBXProject "BetelgeuseSwiftSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A8BB37761F844F9B001A29C2 /* Debug */,
-				A8BB37771F844F9B001A29C2 /* Release */,
+				A8BB378B1F84590B001A29C2 /* Debug */,
+				A8BB378C1F84590B001A29C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A8BB37781F844F9B001A29C2 /* Build configuration list for PBXNativeTarget "BetelgeuseSwiftSDK" */ = {
+		A8BB378D1F84590B001A29C2 /* Build configuration list for PBXNativeTarget "BetelgeuseSwiftSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A8BB37791F844F9B001A29C2 /* Debug */,
-				A8BB377A1F844F9B001A29C2 /* Release */,
+				A8BB378E1F84590B001A29C2 /* Debug */,
+				A8BB378F1F84590B001A29C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A8BB37671F844F9A001A29C2 /* Project object */;
+	rootObject = A8BB377C1F84590B001A29C2 /* Project object */;
 }
