@@ -83,41 +83,28 @@ public class Betelgeuse {
         self.versionsRegisterURL = versionsRegisterUrl
         self.currentVersion = Version(fromString: currentVersion) // todo -> Version Type
 
-        let vv = [
-            Version(fromString: "0.0.1"),
-            Version(fromString: "2.0.1"),
-            Version(fromString: "0.0.2"),
-            Version(fromString: "1.5.2"),
-            Version(fromString: "0.1.3"),
-            Version(fromString: "1.0.0"),
-            Version(fromString: "1.0.1"),
-            Version(fromString: "1.0.2"),
-        ]
+        getAllVersions(completionHandler: ({ data in
+            let allVersions = data.allKeys.map({ s in
+                return Version(fromString: s as! String)
+            })
 
-        print("v \(self.currentVersion.toString())")
+            Version.sortDesc(allVersions).forEach({ (v) in
+                print(v.toString())
+            })
 
-        let x = Version.sortDesc(vv).map({ v in
-            return v.toString()
-        })
+            if let bestVersion = Version.getBestVersion(currentVersion: self.currentVersion, versions: allVersions) {
+                print("Best Version: \(bestVersion.toString())")
+            }
+            else {
+                print("No unbreaking changes on your current version \(currentVersion)")
+            }
 
-        if let bestVersion = Version.getBestVersion(currentVersion: Version(fromString: "1.0.0"), versions: vv) {
-            print("Best Version: \(bestVersion.toString())")
-        }
-        else {
-            print("no best version yet")
-        }
-
-
-//        print(x)
-
-        //        this.getAllVersions(completionHandler: ({ data in
-        //            print(data.allKeys)
-        //        }))
-        //        BetelgeuseSwiftSDK.loadUrl()
-        //
-        //        if let m = BetelgeuseSwiftSDK.loadDataFromFile() {
-        //            print("The Model() is \(m.nested.nested.file.value)")
-        //        }
+        }))
+//        BetelgeuseSwiftSDK.loadUrl()
+//
+//        if let m = BetelgeuseSwiftSDK.loadDataFromFile() {
+//            print("The Model() is \(m.nested.nested.file.value)")
+//        }
     }
 
     //    public static func getModel() -> Model? {
@@ -175,7 +162,7 @@ public class Betelgeuse {
 
     public func getAllVersions(completionHandler: @escaping(NSDictionary) -> Void) {
         //        let url = URL(string: "\(ENDPOINT_URL)/versions.json")
-
+        print("Loading all versions from \(self.versionsRegisterURL)")
         URLSession.shared.dataTask(with: self.versionsRegisterURL, completionHandler: {(data, response, error) in
             guard let data = data, error == nil else {
 //                print(error)
