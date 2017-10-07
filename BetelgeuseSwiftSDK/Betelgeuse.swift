@@ -101,20 +101,16 @@ public class Betelgeuse {
 
         URLSession.shared.dataTask(with: self.versionsRegisterURL, completionHandler: {(data, response, error) in
             guard let data = data, error == nil else {
-                print(error)
+//                print(error)
                 return
             }
-            do {
-                if let jsonResult = try? JSONSerialization.jsonObject(
-                    with: data,
-                    options: JSONSerialization.ReadingOptions.mutableContainers
-                    ) as! NSDictionary {
-                    return completionHandler(jsonResult)
-                } else {
-                    print("Error in reading the json")
-                }
-            } catch let error as NSError {
-                print(error)
+            if let jsonResult = try? JSONSerialization.jsonObject(
+                with: data,
+                options: JSONSerialization.ReadingOptions.mutableContainers
+                ) as! NSDictionary {
+                return completionHandler(jsonResult)
+            } else {
+                print("Error in reading the json")
             }
         }).resume()
     }
