@@ -7,23 +7,26 @@
 //
 
 import Foundation
-//import BetelgeuseSampleRepo1
 
 public class Betelgeuse {
-    // This will live in Generated Plist
-    private let localDataBundlePath: String
+    private let localDataBundleUrl: URL
+    private let localFileName: String
+    private let localFileExtension: String
     private let remoteDataUrl: URL
     private let versionsRegisterURL: URL
     private let currentVersion: String // Version type
 
     public init(
-        localDataBundlePath: String,
-
+        localDataBundleUrl: URL,
+        localFileName: String,
+        localFileExtension: String,
         remoteDataUrl: URL,
         versionsRegisterUrl: URL,
         currentVersion: String) {
 
-        self.localDataBundlePath = localDataBundlePath
+        self.localDataBundleUrl = localDataBundleUrl
+        self.localFileName = localFileName
+        self.localFileExtension = localFileExtension
         self.remoteDataUrl = remoteDataUrl
         self.versionsRegisterURL = versionsRegisterUrl
         self.currentVersion = currentVersion // todo -> Version Type
@@ -54,44 +57,39 @@ public class Betelgeuse {
     //            // the URL was bad!
     //        }
     //    }
-    public func getModel<M>() -> M? {
-        return self.loadDataFromFile() as? M;
+    public func getModel() -> NSDictionary? {
+        return loadDataFromFile();
     }
 
     private func loadDataFromFile() -> NSDictionary? {
-        //        let fileName = BetelgeuseSwiftSDK.FILE_NAME
-
-        //        let podBundle = Bundle(for: BetelgeuseSwiftSDK.self as AnyClass)
-
-
-        //        if let bundleURL = podBundle.url(forResource: "BetelgeuseSwiftSDKData", withExtension: "bundle") {
-//        if let bundle = Bundle(url: self.localDataBundleUrl) {
-//            if let path = bundle.path(forResource: "Data", ofType: "json") {
+        if let dataBundle = Bundle(url: self.localDataBundleUrl) {
+            if let path = dataBundle.path(forResource: self.localFileName, ofType: self.localFileExtension) {
                 if let jsonData = try? NSData(
-                    contentsOfFile: self.localDataBundlePath,
+                    contentsOfFile: path,
                     options: NSData.ReadingOptions.mappedIfSafe
                     ) {
                     if let jsonResult: NSDictionary = try? JSONSerialization.jsonObject(
                         with: jsonData as Data,
                         options: JSONSerialization.ReadingOptions.mutableContainers
                         ) as! NSDictionary {
+                        print("Betelgeuse: Succefully loaded the local data")
                         return jsonResult
                     }
                     else {
-                        print("Not a valid json")
+                        print("Betelgeuse: Not a valid json")
                     }
                 }
                 else {
-                    print("Cannot read data from file")
+                    print("Betelgeuse: Cannot read data from file")
                 }
-//            }
-//            else {
-//                print("Path \(path) not found")
-//            }
-//        }
-//        else {
-//            print("Bundle path not found")
-//        }
+            }
+            else {
+                print("Betelgeuse: Path not found")
+            }
+        }
+        else {
+            print("Betelgeuse: Bundle URL not found")
+        }
 
         return nil
     }
