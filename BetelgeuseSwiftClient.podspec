@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'BetelgeuseSwiftClient'
-s.version = '0.0.3'
+s.version = '0.0.4'
 s.license = { :type => 'MIT', :file => 'LICENCE' }
 s.summary = 'Betelgeuse Swift Client'
 
