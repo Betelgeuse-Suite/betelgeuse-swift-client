@@ -41,12 +41,13 @@ public class Betelgeuse {
     private let remoteDataBaseUrl: URL
     private let remoteDataPath: String
     private let versionsRegisterURL: URL
-    private let updateDataVersion: (String) -> Void
 
     // There is a distinction between the 2 because the Schema is fixed while the Data is not
     private let currentSchemaVersion: Version
     // The Data Version is at least same as the Schema Version or larger
     private let currentDataVersion: Version
+
+    private let userDefaults: UserDefaults
 
     public init(
         repoName: String,
@@ -56,9 +57,9 @@ public class Betelgeuse {
         remoteDataBaseUrl: URL,
         remoteDataPath: String,
         versionsRegisterUrl: URL,
-        currentSchemaVersion: String,
-        updateDataVersion: @escaping(String) -> Void
+        currentSchemaVersion: String
         ) {
+        self.userDefaults = UserDefaults.standard
 
         self.repoName = repoName
         self.localDataBundleUrl = localDataBundleUrl
@@ -67,29 +68,60 @@ public class Betelgeuse {
         self.remoteDataBaseUrl = remoteDataBaseUrl
         self.remoteDataPath = remoteDataPath
         self.versionsRegisterURL = versionsRegisterUrl
-        self.updateDataVersion = updateDataVersion
 
         self.currentSchemaVersion = Version(fromString: currentSchemaVersion)
-        self.currentDataVersion = Version(fromString: currentSchemaVersion) // change later
 
-        print("Instantiating Betelgeuse for \(repoName) with Schema Version: v\(currentSchemaVersion)")
-//        readLocalFile(name: )
+        if let cachedVersion = userDefaults.string(forKey: "BetelgeuseCurrentDataVersion") {
+            self.currentDataVersion = Version(fromString: cachedVersion)
+        } else {
+            self.currentDataVersion = Version(fromString: currentSchemaVersion)
+        }
+
+        print("Betelgeuse: Instantiating Betelgeuse for \(repoName):")
+        print("Betelgeuse: Current Schema Version: v\(currentSchemaVersion)")
+        print("Betelgeuse: Current Data Version: v\(currentDataVersion.toString())")
 
         // TODO: Add Validation
         //  If the currentDataVersion somehow is smaller than the currentSchemaVersion
         //  it means that data somehow got corrupted, and it should fallback to using the original Data.json
 
         checkForUpdates(completionHandler: { bestVersion in
-            self.loadData(version: bestVersion, completionHandler: { (data) in
-                print("json data")
-                print(data)
-
-                self.updateDataVersion(bestVersion.toString())
-
-//                self.writeLocalFile(to: "\(repoName)_Data_v\(bestVersion.toString()).plist", data: data)
-//                self.readLocalFile(name: "\(repoName)_Data_v\(bestVersion.toString()).plist")
+            self.loadDataVersion(version: bestVersion, completionHandler: { (dataAsDict) in
+                self.installNewerVersion(version: bestVersion, data: dataAsDict);
             })
         })
+    }
+
+    public func getModel() -> NSDictionary? {
+        if let cachedFileName = userDefaults.string(forKey: "BetelgeuseCurrentDataFileName") {
+            print("cached file name \(cachedFileName)")
+            if let data = readLocalFile(name: cachedFileName) {
+                print("cached data \(data)")
+                return data;
+            }
+        }
+
+        // SideEffect: reset the user defaults besides returing the Original Model
+        resetUserDefaults();
+
+        return loadDataFromOriginalFile();
+    }
+
+    private func resetUserDefaults() {
+        self.userDefaults.removeObject(forKey: "BetelgeuseCurrentDataFileName")
+        self.userDefaults.set(currentSchemaVersion.toString(), forKey: "BetelgeuseCurrentDataVersion")
+
+        print("Betelgeuse: reset userDefaults:")
+        print("     \(userDefaults.string(forKey: "BetelgeuseCurrentDataFileName"))")
+        print("     \(userDefaults.string(forKey: "BetelgeuseCurrentDataVersion"))")
+    }
+
+    private func installNewerVersion(version: Version, data: NSDictionary) {
+        let fileName = "\(repoName)_Data_v\(version.toString()).plist"
+        self.writeLocalFile(name: fileName, data: data)
+
+        self.userDefaults.set(version.toString(), forKey: "BetelgeuseCurrentDataVersion")
+        self.userDefaults.set(fileName, forKey: "BetelgeuseCurrentDataFileName")
     }
 
     private func checkForUpdates(completionHandler: @escaping(Version) -> Void) {
@@ -99,40 +131,23 @@ public class Betelgeuse {
             })
 
             if let bestVersion = Version.getBestVersion(currentVersion: self.currentDataVersion, versions: allVersions) {
-                print("Best Version found: \(bestVersion.toString())")
+                print("Betelgeuse: Found newer version: \(self.currentDataVersion) -> \(bestVersion.toString())")
 
                 completionHandler(bestVersion)
             }
             else {
-                print("No unbreaking changes on your current version \(self.currentDataVersion)")
+                print("Betelgeuse: No new versions found \(self.currentDataVersion)")
             }
         }))
     }
 
-    private func saveCurrentDataVersion(v: Version) {
-        let dict: NSDictionary = [
-            "version": v.toString(),
-            "updated_at": "now"
-        ]
-
-        writeLocalFile(to: "DataVersion", data: dict)
-    }
-
-//    private func getCurrentDataVersion() -> Version {
-//        return
-//    }
-
-    private func loadData(version: Version, completionHandler: @escaping(NSDictionary) -> Void) {
+    private func loadDataVersion(version: Version, completionHandler: @escaping(NSDictionary) -> Void) {
         if let url = URL(string: "\(self.remoteDataBaseUrl)/v\(version.toString())/\(self.remoteDataPath)") {
             self.loadData(fromUrl: url, completionHandler: completionHandler)
         }
         else {
-            print("Bad Url")
+            print("Bad Version Url")
         }
-    }
-
-    public func getModel() -> NSDictionary? {
-        return loadDataFromOriginalFile();
     }
 
     private func loadDataFromOriginalFile() -> NSDictionary? {
@@ -146,7 +161,7 @@ public class Betelgeuse {
                         with: jsonData as Data,
                         options: JSONSerialization.ReadingOptions.mutableContainers
                         ) as! NSDictionary {
-                        print("Betelgeuse: Succefully loaded the local data")
+                        print("Betelgeuse: Use the Original Data.json File")
                         return jsonResult
                     }
                     else {
@@ -191,23 +206,17 @@ public class Betelgeuse {
         }).resume()
     }
 
-//    public func readPlist(from: URL) -> NSDictionary {
-//        return NSDictionary(contentsOf: from)
-//    }
-
-    private func readLocalFile(name: String) {
-        let localUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+    private func readLocalFile(name: String) -> NSDictionary? {
+        let localUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
         let fileUrl = localUrl.appendingPathComponent(name)
 
-        print("read file from \(fileUrl.absoluteURL)")
-        let dict = NSDictionary(contentsOf: fileUrl);
-
-        print("Reading \(dict)")
+        print("Reading file from \(fileUrl.absoluteURL)")
+        return NSDictionary(contentsOf: fileUrl);
     }
 
-    private func writeLocalFile(to: String, data: NSDictionary) {
-        let localUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-        let fileUrl = localUrl.appendingPathComponent(to)
+    private func writeLocalFile(name: String, data: NSDictionary) {
+        let localUrl = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        let fileUrl = localUrl.appendingPathComponent(name)
 
         data.write(to: fileUrl, atomically: true)
         print("Saved file \(fileUrl.absoluteURL)")
