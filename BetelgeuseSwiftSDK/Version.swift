@@ -37,6 +37,12 @@ public class Version {
             || b.major == a.major && b.minor > a.minor
             || b.major == a.major && b.minor == a.minor && b.patch > a.patch
     }
+    
+    public static func isEqualTo(_ a: Version, _ b: Version) -> Bool {
+        return b.major == a.major
+            || b.major == a.major && b.minor == a.minor
+            || b.major == a.major && b.minor == a.minor && b.patch == a.patch
+    }
 
     public static func isNonBreakingRelease(_ a: Version, _ b: Version) -> Bool {
         return a.major == b.major

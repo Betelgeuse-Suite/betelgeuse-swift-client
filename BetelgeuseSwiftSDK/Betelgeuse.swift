@@ -72,14 +72,35 @@ public class Betelgeuse {
         self.versionsRegisterURL = versionsRegisterUrl
 
         self.currentSchemaVersion = Version(fromString: currentSchemaVersion)
-
-        if let cachedVersion = userDefaults.string(forKey: "BetelgeuseCurrentDataVersion") {
-            self.currentDataVersion = Version(fromString: cachedVersion)
-        } else {
-            self.currentDataVersion = Version(fromString: currentSchemaVersion)
+        self.currentDataVersion = Betelgeuse.getCurrentDataVersion(currentSchemaVersion: Version(fromString: currentSchemaVersion))
+        
+        
+        // If the Data is not newer than the Schema (maybe because a new deploy) then reset the UserDefaults
+        if !Version.isNewerThan(self.currentSchemaVersion, self.currentDataVersion) {
+            resetUserDefaults()
         }
+        
 
         print("Betelgeuse: Instantiating Betelgeuse for \(repoName) Bundle, Version(Schema: v\(self.currentSchemaVersion.toString()), Data: v\(self.currentDataVersion.toString()))")
+    }
+    
+    private static func getCurrentDataVersion(currentSchemaVersion: Version) -> Version {
+        // If the userDefault somehow changes, make sure you change it here
+        // This code is a duplicate but for some dumb reason this method needs to be static
+        let userDefaults = UserDefaults.standard
+        
+        if let cachedVersionString = userDefaults.string(forKey: "BetelgeuseCurrentDataVersion") {
+            let cachedVersion = Version(fromString: cachedVersionString)
+            
+            print("is newere?")
+            if Version.isNewerThan(currentSchemaVersion, cachedVersion) {
+                print("apparently yes")
+                return cachedVersion
+            }
+        }
+        
+        // Default to Current Schema Version
+        return currentSchemaVersion
     }
 
     public func checkAndInstallUpdates() {
@@ -102,7 +123,7 @@ public class Betelgeuse {
         }
 
         // SideEffect: reset the user defaults besides returing the Original Model
-        resetUserDefaults();
+//        resetUserDefaults();
 
         return loadDataFromOriginalFile();
     }
@@ -110,10 +131,9 @@ public class Betelgeuse {
     private func resetUserDefaults() {
         self.userDefaults.removeObject(forKey: "BetelgeuseCurrentDataFileName")
         self.userDefaults.set(currentSchemaVersion.toString(), forKey: "BetelgeuseCurrentDataVersion")
+        self.userDefaults.set("", forKey: "BetelgeuseCurrentDataFileName")
 
-        print("Betelgeuse: reset userDefaults:")
-        print("     \(userDefaults.string(forKey: "BetelgeuseCurrentDataFileName")!)")
-        print("     \(userDefaults.string(forKey: "BetelgeuseCurrentDataVersion")!)")
+        print("Betelgeuse: Reset userDefaults.")
     }
 
     /*
